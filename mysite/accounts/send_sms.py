@@ -7,7 +7,7 @@ from twilio.rest import Client
 def sendsms():
 
     account_sid = "ACd315812105d4be30d3a94b54aa787b63"
-    auth_token = "e771bc0fe0a909f5353f4b5774852267"
+    auth_token = "4550ed9b1667036fcc7869c3f7d96b0e"
     client = Client(account_sid, auth_token)
 
     message = client.messages \
