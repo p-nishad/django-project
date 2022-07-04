@@ -1,0 +1,238 @@
+{% load static %}
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="{% static 'img/cart-1.png' %}" rel="icon">
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+<!-- Top bar start -->
+<div class="container-fluid">
+    <div class="row bg-secondary py-2 px-xl-5">
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="d-inline-flex align-items-center">
+                <a class="text-dark" href="">FAQs</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-dark" href="">Help</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-dark" href="">Support</a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+            <div class="d-inline-flex align-items-center">
+                <a class="text-dark px-2" href="">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="text-dark px-2" href="">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="text-dark px-2" href="">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="text-dark px-2" href="">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a class="text-dark pl-2" href="">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a class="text-dark pl-2" href="">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+    
+    <div class="row align-items-center py-3 px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a href="{% url 'home' %}" class="text-decoration-none">
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">H</span>O-me!</h1>
+            </a>
+        </div>
+        <div class="col-lg-6 col-6 text-left">
+            <form action="{% url 'search' %}" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for products" name="keyword">
+                    <div class="input-group-append">
+                        
+                            <button class="btn btn-primary" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3 col-6 text-right">
+            <a href="" class="widget-heaer-pl-3 ml-3">
+                <i class="fa fa-heart"></i>
+                <span class="badge badge-pill badge-danger notify">0</span>
+            </a>
+            <a href="{% url 'cart' %}" class="widget-heaer-pl-3 ml-3">
+                <i class="fa fa-shopping-cart"></i>
+                      <span class="badge badge-pill badge-danger notify">{{ cart_count }}</i></span>
+              </a>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+   <!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+   
+   <div class="container-fluid bg-secondary mb-5"></div>
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Payment Page</h1>
+            <div class="d-inline-flex">
+               
+                <b><p class="m-0" style="font-size:175%;"><a href="{% url 'home' %}">Go to Home</a></p></b>
+            </div>
+        </div>
+    </div>
+
+{% block content %}
+
+
+ <!-- Cart Start -->
+ <div class="container-fluid pt-5">
+    <div class="row px-xl-5">
+        <h4 class="mb-10">Review your order and make Payment</h4><br><br>
+        <div class="col-lg-7 table-responsive mb-5">
+            <div class="card">
+                <h5 class="card-header">Billing Address</h5>
+                <div class="card-body">
+                  <p class="card-text mb-0">{{ order.full_name }}</p>
+                  <p class="card-text mb-0">{{ order.full_address }}</p>
+                  <p class="card-text mb-0">{{ order.city }}</p>
+                  <p class="card-text mb-0">{{ order.state }}</p>
+                  <p class="card-text mb-0">{{ order.country }}</p>
+                  <p class="card-text mb-0">{{ order.email }}</p>
+                  <p class="card-text mb-0">{{ order.phone }}</p>
+                  {% if order.order_note %}
+                  <b>Order Note:</b>{{ order.order_note }}
+                  {% endif %}
+
+                </div>
+              </div><br>
+              <div class="card">
+                <h5 class="card-header">Payment Method</h5>
+                <div class="card-body">
+                  
+                  <p class="card-text">Paypal</p>
+                  
+                </div>
+              </div><br>
+              <div class="card">
+                <h5 class="card-header">Review Products</h5>
+                <div class="card-body">
+                  
+                    <table class="table text-center mb-0">
+                        <thead class="bg-secondary text-dark">
+                            <tr>
+                                <th>Products</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody class="align-middle">
+                            {% for cart_item in cart_items %}
+                            <tr>
+                                <td class="align-middle"><img src="{{ cart_item.product.images.url}}" alt="" style="width: 50px;"><a href="{{ cart_item.product.get_url }}"> {{ cart_item.product.product_name }}</a></td>
+                                <td class="align-middle">{{ cart_item.product.price }}</td>
+                                <td class="align-middle">
+                                    <div class="input-group quantity mx-auto" style="width: 100px;">
+                                        
+                                        <input type="text" class="form-control form-control-sm bg-secondary text-center" value="{{ cart_item.quantity }}">
+                                       
+                                    </div>
+                                </td>
+                                <td class="align-middle">{{ cart_item.sub_total }}</td>
+                                
+                            </tr>
+                            {% endfor %}
+               
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+        </div>
+ 
+
+    
+        <div class="col-lg-5">
+           
+            <div class="card border-secondary mb-5">
+                <div class="card-header bg-secondary border-0">
+                    <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3 pt-1">
+                        <h6 class="font-weight-medium">Subtotal</h6>
+                        <h6 class="font-weight-medium">₹ {{ total }}</h6>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-medium">Shipping Charge</h6>
+                        <h6 class="font-weight-medium">₹ {{ shipping }}</h6>
+                    </div>
+                </div>
+                <div class="card-footer border-secondary bg-transparent">
+                    <div class="d-flex justify-content-between mt-2">
+                        <h5 class="font-weight-bold">Grand Total</h5>
+                        <h5 class="font-weight-bold">{{ grand_total }}</h5>
+                    </div>
+                    <div class="container">
+                  
+                   
+                    <form action="{% url 'success' %}" method="POST">
+                        {% csrf_token %}
+                        <script    src="https://checkout.razorpay.com/v1/checkout.js"    
+                            data-key="rzp_test_0DzMFV4V6t3o4d" 
+                            data-amount="{{ payment.amount }}" 
+                            data-currency="INR"
+                            data-order_id="{{ payment.id }}"
+                            data-buttontext="Pay with Razorpay"    
+                            data-name="Ho-me! Corp"    
+                            data-description="{{ payment.order_id }}"    
+                            data-image="{% static 'img/cart-1.png' %}"    
+                            data-prefill.name="{{ payment.current_user }}"    
+                            data-prefill.email=""    
+                            data-theme.color="#F37254">
+                        </script>
+                            <input type="hidden" custom="Hidden Element" name="hidden">
+                    </form>
+                    
+                </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart End -->
+
+
+
+{% endblock %}
+
+
+{% include 'includes/footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

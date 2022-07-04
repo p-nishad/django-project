@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+{% block content %}
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+   
+<div id="header-carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+       <div class="carousel-item active" style="height: 410px;">
+          <img class="img-fluid" src="{% static 'img/ac-1.jpg' %}" alt="Image">
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+             <div class="p-3" style="max-width: 700px;">
+                <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Products</h3>
+                <a href="{% url 'store' %}" class="btn btn-light py-2 px-3">Shop Now</a>
+             </div>
+          </div>
+       </div>
+       <div class="carousel-item" style="height: 410px;">
+          <img class="img-fluid" src="{% static 'img/Wash.jpg' %}" alt="Image">
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+             <div class="p-3" style="max-width: 700px;">
+                <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
+                <a href="{% url 'store' %}" class="btn btn-light py-2 px-3">Shop Now</a>
+             </div>
+          </div>
+       </div>
+    </div>
+    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+       <div class="btn btn-dark" style="width: 45px; height: 45px;">
+          <span class="carousel-control-prev-icon mb-n2"></span>
+       </div>
+    </a>
+    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+       <div class="btn btn-dark" style="width: 45px; height: 45px;">
+          <span class="carousel-control-next-icon mb-n2"></span>
+       </div>
+    </a>
+ </div>
+ </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Featured Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+           <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+              <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                 <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                 <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
+              </div>
+           </div>
+           <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+              <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                 <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                 <h5 class="font-weight-semi-bold m-0">Safe Delivery</h5>
+              </div>
+           </div>
+           <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+              <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                 <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                 <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
+              </div>
+           </div>
+           <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+              <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                 <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                 <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+              </div>
+           </div>
+        </div>
+     </div>
+     </div> 
+
+    <!-- Featured End -->
+
+     <!-- Products Start -->
+     
+     <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+         {% for product in products %}
+            
+          <div class="col hp">
+            <div class="card h-100 shadow-lg">
+              <a href="{{ product.get_url }}">
+              <img src="{{ product.images.url }}" class="card-img-top" alt="product.title" />
+              </a>
+              <div class="label-top shadow-sm">
+                <a class="text-white" href="{{ product.get_url }}">{{ product.product_name }}</a>
+              </div>
+              <div class="card-body">
+                <div class="clearfix mb-3">
+                  <span class="float-start badge rounded-pill bg-success">₹ {{ product.price }}</span>
+                  <span class="float-end">{{ product.stock }} Products</span>
+                </div>
+                <h5 class="card-title">
+                  <a target="_blank" href="{{ product.get_url }}">{{ product.description }}</a>
+                </h5>
+                <div class="d-grid gap-2 my-4">
+                  <a href="{{ product.get_url }}" class="btn btn-warning bold-btn">View Details</a>
+                </div>
+                <div class="clearfix mb-1">   
+                  <span class="float-end">
+                     <i class="far fa-heart" style="cursor: pointer"></i>
+                  </span>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+
+          {% endfor %}
+        </div>
+    </div>
+      
+
+     <!-- Products end -->
+     
+    <!-- Subscribe Start -->
+    <div class="container-fluid bg-secondary my-5">
+        <div class="row justify-content-md-center py-5 px-xl-5">
+            <div class="col-md-6 col-12 py-5">
+                <div class="text-center mb-2 pb-2">
+                    <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">Stay Updated</span></h2>
+                    <p>Amet lorem at rebum amet dolores. Elitr lorem dolor sed amet diam labore at justo ipsum eirmod duo labore labore.</p>
+                </div>
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-white p-4" placeholder="Email Goes Here">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary px-4">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Subscribe End -->
+
+
+ 
+
+   
+
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+   
+    
+
+    <!-- Template Javascript -->
+    
+</body>
+
+</html>
+{% endblock %}
