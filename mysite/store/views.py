@@ -11,6 +11,7 @@ from. models import ReviewandRating
 from django.contrib import messages
 from orders.models import OrderProduct
 from accounts.forms import UserProfile,UserForm
+from home.views import *
 
 # Create your views here.
 def store(request, category_slug=None):

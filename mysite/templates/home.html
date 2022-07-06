@@ -106,8 +106,8 @@
                   <a href="{{ product.get_url }}" class="btn btn-warning bold-btn">View Details</a>
                 </div>
                 <div class="clearfix mb-1">   
-                  <span class="float-end">
-                     <i class="far fa-heart" style="cursor: pointer"></i>
+                  <span class="float-end"><a href="{% url 'add_to_wishlist' product.slug %}">
+                     <i class="far fa-heart" style="cursor: pointer"></i></a>
                   </span>
                 </div>
                 

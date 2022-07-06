@@ -92,5 +92,16 @@ class ProductGallery(models.Model):
         return self.product.product_name
     
     
+# class Wishlist(models.Model):
+#     user = models.ForeignKey(Account,on_delete=models.CASCADE)
+#     product = models.ForeignKey(Product,on_delete=models.CASCADE)
+#     slug = models.CharField(max_length=30,null=True,blank=True)
+#     added_date = models.DateTimeField(auto_now_add=True)
+    
+#     def __str__(self):
+#         return self.user.email
+    
+    
+    
 
     
