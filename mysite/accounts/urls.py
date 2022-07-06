@@ -20,4 +20,5 @@ urlpatterns =[
     path('view_account/',views.view_account,name='view_account'),
     path('delete_user/<int:id>/',views.delete_user,name='delete_user'),
     path('add_user/',views.add_user,name='add_user'),
+    path('add_profile/',views.add_profile,name='add_profile'),
     ]

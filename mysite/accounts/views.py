@@ -160,10 +160,10 @@ def dashboard(request):
     orders = Order.objects.order_by('created_at').filter(user_id=request.user.id,is_ordered=True) 
     orders_count = orders.count()
     
-    userprofile = UserProfile.objects.get(user_id=request.user.id)
+    user_profile = UserProfile.objects.filter(id=request.user.id)
     context = {
         'orders_count' : orders_count,
-        'userprofile' : userprofile,
+        'user_profile' : user_profile,
     }
     return render(request, "accounts/dashboard.html",context)
 
@@ -278,7 +278,7 @@ def edit_profile(request):
     context = {
         'user_form' : user_form,
         'profile_form' : profile_form,
-        'userprofile' : userprofile,
+        # 'userprofile' : userprofile,
     }
             
     return render(request,'accounts/edit_profile.html',context)
@@ -370,3 +370,22 @@ def add_user(request):
             'admin_form' : admin_form,
         }
     return render(request,'admin/add_user.html',context)
+
+def add_profile(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        profile_form = UserProfileForm(request.POST)
+        if user_form.is_valid and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request,'Profile added Successfully.')
+            return redirect(dashboard)
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+    context = {
+        'user_form' : user_form,
+        'profile_form' : profile_form,
+    }
+
+    return render(request,'accounts/add_profile.html',context)
