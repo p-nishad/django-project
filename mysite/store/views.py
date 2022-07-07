@@ -209,3 +209,20 @@ def delete_variation(request,id):
     messages.success(request,'Variation deleted Successfully.')
     return redirect(view_variation)
 
+def edit_product(request,slug):
+    product_to_edit = get_object_or_404(Product,slug=slug)
+    edit_form = ProductForm(instance=product_to_edit)
+    if request.method == 'POST':
+        edit_form = ProductForm(request.POST,request.FILES,instance=product_to_edit)
+        if edit_form.is_valid():
+            edit_form.save()
+            messages.info(request,'Product detail updated.')
+            return redirect(view_product)
+    else:
+        edit_form = ProductForm(instance=product_to_edit)
+    context = {
+        'edit_form' : edit_form,
+        'products' : product_to_edit,
+    }
+    return render(request,'admin/edit_product.html',context)
+
