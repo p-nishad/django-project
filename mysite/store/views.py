@@ -208,3 +208,4 @@ def delete_variation(request,id):
     variation.delete()
     messages.success(request,'Variation deleted Successfully.')
     return redirect(view_variation)
+
