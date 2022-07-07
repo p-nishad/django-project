@@ -145,20 +145,19 @@
                       <div class="ratings d-flex flex-row align-items-center">
                          <div class="d-flex flex-row">	<i class='bx bxs-star' ></i>	<i class='bx bxs-star' ></i>	<i class='bx bxs-star' ></i>	<i class='bx bxs-star' ></i>	<i class='bx bx-star' ></i>	</div><br>
                         </div>
-                         {% if single_product.stock <= 5 %}
-                         <span class="text-danger">Hurry! only {{ single_product.stock }} remaining</span>
-                         {% else %}
+                         
                          <span class="">{{ single_product.stock }} Products</span>	
-                         {% endif %}
+                         
                     
                       <div class="mt-5">
                          
-                         
+                         {% if single_product.stock  >= 1 %}
                          <select name="color" class="form-control-sm" required>
                             <option value="" disabled selected>Select color</option>
                             {% for i in single_product.variation_set.colors %}
                             <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
                             {% endfor %}
+                            {% endif %}
                         </select>
                       </div>
                       <div class="buttons d-flex flex-row mt-5 gap-3">
