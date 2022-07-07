@@ -7,7 +7,7 @@
         <a class="list-group-item {% if '/store/admin_dashboard/' == request.path %} active {% endif %}" href="{% url 'admin_dashboard' %}"> Dashboard </a>
         <a class="list-group-item {% if '/accounts/view_account/' in request.path %} active {% endif %}" href="{% url 'view_account' %}"> Accounts </a>
         <a class="list-group-item {% if '/category/view_category/' == request.path %} active {% endif %}" href="{% url 'view_category' %}"> Categories </a>
-        <a class="list-group-item {% if '/store/view_product/' in request.path %}  {% elif '/store/add_product/' in request.path  %} active {% endif %}" href="{% url 'view_product' %}">Products </a>
+        <a class="list-group-item {% if '/store/view_product/' in request.path %} active {% endif %}" href="{% url 'view_product' %}">Products </a>
         <a class="list-group-item {% if '/store/view_variation/' in request.path %} active {% endif %}" href="{% url 'view_variation' %}">Variations </a>
         <a class="list-group-item {% if '/cart/view_cart/' in request.path %} active {% endif %}" href="{% url 'view_cart' %}"> Carts </a>
         <a class="list-group-item {% if '/cart/view_cart_item/' in request.path %} active {% endif %}" href="{% url 'view_cart_item' %}">Cart Items </a>
@@ -15,7 +15,6 @@
         <a class="list-group-item {% if '/my_orders/' in request.path %} active {% endif %}" href=""> Ordered Products </a>
         <a class="list-group-item {% if '/orders/view_payment/' in request.path %} active {% endif %}" href="{% url 'view_payment' %}"> Payments </a>
         <a class="list-group-item {% if '/store/view_review/' in request.path %} active {% endif %}" href="{% url 'view_review' %}"> Reviews and Ratings </a>
-        <!-- <a class="list-group-item {% if '/change_password/' in request.path %} active {% endif %}" href="">Variations </a> -->
     </ul>
     <br>
     <a class="btn btn-light btn-block shadow-lg" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a> 
