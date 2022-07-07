@@ -144,10 +144,13 @@
                       
                       <div class="ratings d-flex flex-row align-items-center">
                          <div class="d-flex flex-row">	<i class='bx bxs-star' ></i>	<i class='bx bxs-star' ></i>	<i class='bx bxs-star' ></i>	<i class='bx bxs-star' ></i>	<i class='bx bx-star' ></i>	</div><br>
-                         
-                         
-                         <span>{{ single_product.stock }} Products</span>	
-                      </div>
+                        </div>
+                         {% if single_product.stock <= 5 %}
+                         <span class="text-danger">Hurry! only {{ single_product.stock }} remaining</span>
+                         {% else %}
+                         <span class="">{{ single_product.stock }} Products</span>	
+                         {% endif %}
+                    
                       <div class="mt-5">
                          
                          
