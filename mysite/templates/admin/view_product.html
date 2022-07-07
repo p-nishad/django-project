@@ -87,7 +87,7 @@
                                     <td>{{ product.price }}</td>
                                     <td>{{ product.stock }}</td>
                                     <td>{{ product.is_available }}</td>
-                                    <td><a href="{% url 'edit_product' product.slug %}"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
+                                    <td><a href="{% url 'edit_product' products.slug %}"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
                                     <td><a href="{% url 'delete_product' product.slug %}" onclick="return confirm('Are You sure to delete this Product')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                   </tr>
                                   {% endfor %}
