@@ -85,7 +85,7 @@
                                     <td>{{ account.email }}</td>
                                     <td>{{ account.phone_number }}</td>
                                     <td>{{ account.is_superadmin }}</td>
-                                    <td><a href="{% url 'edit_user' account.id %}"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
+                                    <td><a href="{% url 'edit_user' accounts.id %}"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
                                     <td><a href="{% url 'delete_user' account.id %}" onclick="return confirm('Are You sure to delete this account ?')"><i class="fas fa-trash" aria-hidden="true"></i></a></td>
                                   </tr>
                                {% endfor %}
