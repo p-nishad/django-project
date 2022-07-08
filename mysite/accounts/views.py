@@ -334,7 +334,7 @@ def delete_user(request,id):
 def edit_admin_profile(request):
     userprofile = get_object_or_404(UserProfile,user=request.user)
     if request.method == 'POST':
-        user_form = UserForm(request.POST,instance=request.user)
+        user_form = UserForm(request.POST,instance=userprofile)
         profile_form = UserProfileForm(request.POST,request.FILES,instance=userprofile)
         if user_form.is_valid and profile_form.is_valid():
             user_form.save()
@@ -389,3 +389,22 @@ def add_profile(request):
     }
 
     return render(request,'accounts/add_profile.html',context)
+
+
+
+def edit_user(request,id):
+    user_to_edit = get_object_or_404(Account,id=id)
+    if request.method == 'POST':
+        account_form = AccountForm(request.POST,instance=user_to_edit)
+        if account_form.is_valid():
+            account_form.save()
+            return redirect(edit_user)
+    else:
+        account_form = AccountForm(instance=user_to_edit)
+        
+    context = {
+        'user_to_edit' : user_to_edit,
+        'account_form' :account_form,
+    }
+        
+    return render(request,'admin/edit_user.html',context)

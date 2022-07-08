@@ -61,7 +61,7 @@ class UserProfileForm(forms.ModelForm):
     profile_pic = forms.ImageField(required=False,error_messages = {'Invalid':{"Image files only"}},widget=forms.FileInput)
     class Meta:
         model = UserProfile
-        fields = ('address_line_1','address_line_2','city','state','country','profile_pic')
+        fields = ('user','address_line_1','address_line_2','city','state','country','profile_pic')
 
     def __init__(self, *args, **kwargs):
         super(UserProfileForm,self).__init__(*args, **kwargs)
@@ -73,3 +73,5 @@ class AccountForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['first_name','last_name','username','email','phone_number','is_admin','is_staff','is_active','is_superadmin']
+        
+

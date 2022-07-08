@@ -11,10 +11,12 @@
 <!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
+
+
 <!-- Customized Bootstrap Stylesheet -->
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-
+  
   <div class="row align-items-center py-3 px-xl-5">
       <div class="col-lg-3 d-none d-lg-block">
           <a href="{% url 'home' %}" class="text-decoration-none">
@@ -22,9 +24,9 @@
           </a>
       </div>
       <div class="col-lg-6 col-6 text-left">
-          <form action="" method="GET">
+          <form action="{% url 'search' %}" method="GET">
               <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search Admin Page" name="keyword">
+                  <input type="text" class="form-control" placeholder="Search for products" name="keyword">
                   <div class="input-group-append">
                       
                           <button class="btn btn-primary" type="submit">
@@ -43,38 +45,39 @@
    <!-- Page Header Start -->
    <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 60px">
-        <h1 class="font-weight-semi-bold text-uppercase mb-2" style="font-family:Georgia, 'Times New Roman', Times, serif;">Admin Dashboard</h1>
+        <h1 class="font-weight-semi-bold text-uppercase mb-3" style="font-family:Georgia, 'Times New Roman', Times, serif;">Edit User</h1>
     </div>
 </div>
 <!-- Page Header End -->
 
 <!-- ========================= SECTION CONTENT ========================= -->
-<section class="section-content padding-y bg">
+<section class="section-conten padding-y bg">
     {% include 'includes/alerts.html' %}
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-            {% include 'admin/dashboard_side.html' %}
+                {% include 'admin/dashboard_side.html' %}
                 <main class="col-md-9">
                     <article class="card shadow-lg">
                     <header class="card-header">
-                        <strong class="d-inline-block mr-3">Logged in as :</strong>
-                        <span>{{user.full_name}}</span>
+                        <strong class="d-inline-block mr-3">Edit User Detail</strong>
+                       
                     </header>
                     <div class="card-body">
+                      
                         <div class="row"> 
                             <div class="col-md-12">
-                                <div class="card" style="text-align:center;">
-                                    <div class="card-body">
-                                        <img src="{{ userprofile.profile_pic.url }}" alt="User Profile Picture" width="175" height="175" style="border-radius:50%;"><br>
-                                        <h4 class="mb-0">{{ user.email }}</h4>
-                                        <h4>{{ user.phone_number }}</h4>
-                                        <!-- <a class="btn btn-primary" href="{% url 'edit_admin_profile' %}"> Edit Profile </a> -->
-                                    </div>
-                                </div>
+                                <form action="{% url 'edit_user' user.id %}" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ account_form.as_p }}
+                                    <input type="submit" class="btn btn-primary float-right" value="Save" class="type" style="width:20%;">
+                                </form>
                             </div>
-                         </div> <!-- row.// -->
-                     </div> <!-- card-body .// -->
-                    </article> <!-- order-group.// --> 
+                        </div>
+                     <!-- row.// -->
+                    </div> 
+                <!-- card-body .// -->
+                </article> 
+                    <!-- order-group.// --> 
                 </main>
             </div> <!-- row.// -->
         </div>  
