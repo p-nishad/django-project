@@ -148,9 +148,14 @@
                       <div class="mt-5">
                          
                          {% if single_product.stock  >= 1 %}
+                         {% for i in single_product.variation_set.colors %}
+                         <div  class="d-inline"><a style="Color: {{ i.variation_value }}"><i class="fa fa-circle" aria-hidden="true"></i></a></div>
+                         {% endfor %}<br>
                          <select name="color" class="form-control-sm" required>
+
                             <option value="" disabled selected>Select color</option>
                             {% for i in single_product.variation_set.colors %}
+    
                             <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
                             {% endfor %}
                             {% endif %}

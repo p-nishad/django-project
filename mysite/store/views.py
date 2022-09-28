@@ -69,13 +69,18 @@ def product_detail(request, category_slug, product_slug):
 
 
 def search(request):
+    products = None
     if "keyword" in request.GET:
         keyword = request.GET["keyword"]
         if keyword:
             products = Product.objects.order_by("-created_date").filter(
                 Q(description__icontains=keyword) | Q(product_name__icontains=keyword)
             )
-        context = {
+            
+    else:
+         products = Product.objects.all().filter(is_available=True)   
+         print(products)
+    context = {
             "products": products,
         }
     return render(request, "store/store.html", context)
