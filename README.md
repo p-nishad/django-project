@@ -30,12 +30,15 @@ Mysql or Postgresql
 2. Install and activate virtual environment in the same directory using pip
 
 #Check if pip is installed on your system.
+
 `python3 -m pip --version`.
 
 #Upgrade pip version if needed.
+
 `python3 -m pip install --user --upgrade pip`.
 
 #Install Virtual environment and activate it.
+
 `python3 -m venv env`.
 
 `source env/bin/activate`.
