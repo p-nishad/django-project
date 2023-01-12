@@ -25,20 +25,20 @@ Mysql or Postgresql
 ## By cloning the repository
 
 1. Clone the repo.
-2. 
+
 `git clone https://github.com/p-nishad/django-project.git`
 
 2. Install and activate virtual environment in the same directory using pip
 
-#Check if pip is installed on your system.
+***Check if pip is installed on your system.***
 
 `python3 -m pip --version`
 
-#Upgrade pip version if needed.
+***Upgrade pip version if needed.***
 
 `python3 -m pip install --user --upgrade pip`
 
-#Install Virtual environment and activate it.
+***Install Virtual environment and activate it.***
 
 `python3 -m venv env`
 
