@@ -52,7 +52,7 @@ Mysql or Postgresql
 
 `pip install -r requirements.txt`
 
-###### 5. Change your own keys that are inside the env file
+###### 5. Add your own inside settings.py file of project root folder.
 
 ###### 6. Migrate database models.
 
