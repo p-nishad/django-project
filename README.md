@@ -11,3 +11,16 @@ Cart Functionality.
 Search funtionality.
 
 User profile and dashboard.
+
+# Prerequisites
+
+Python3
+
+Django
+
+Mysql or Postgresql
+
+# Getting Started
+
+## By cloning the repository
+
