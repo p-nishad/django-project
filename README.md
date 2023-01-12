@@ -5,6 +5,9 @@
 # Key Features
 
 User registration and login wiht OTP verification.
+
 Cart Functionality.
+
 Search funtionality.
+
 User profile and dashboard.
