@@ -65,3 +65,7 @@ Mysql or Postgresql
  `python manage.py runserver`
  
  
+ # Conclusion
+ 
+ ## Thank you for using this project.
+ ## Happy Coding !!
