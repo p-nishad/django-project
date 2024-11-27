@@ -2,8 +2,6 @@ from datetime import datetime
 from this import d
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-import datetime
 from carts.models import CartItem
 from accounts.views import my_orders
 from store.models import Product
